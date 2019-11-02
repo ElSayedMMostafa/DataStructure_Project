@@ -20,6 +20,7 @@ Cook::Cook(int id, ORD_TYPE ty, int c_orders=4) {
 		break;
 	}
 	cons_orders = c_orders; // Default value is 4 unless the user defined another value.
+	taken_orders = 0;
 }
 bool Cook::isBusy() {
 	return busy;
@@ -27,7 +28,14 @@ bool Cook::isBusy() {
 bool Cook::inBreak() {
 	return in_break;
 }
-void Cook::work() { busy = true; } // Make the cook start working
+bool Cook::work() {  // Makes the cook start working unless he/she is in break
+	if (!Check4Break()) {
+		busy = true;
+		taken_orders++;
+		return true;
+	}
+	return false;
+} 
 
 Cook::~Cook()
 {
@@ -65,6 +73,11 @@ void Cook::setType(ORD_TYPE t)
 	case TYPE_CNT: speed = 6;
 		break;
 	}
+}
+
+bool Cook::Check4Break() {
+	if (taken_orders == cons_orders) { in_break = true; busy = false; return true; }
+	return false;
 }
 
 
