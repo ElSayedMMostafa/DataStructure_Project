@@ -1,6 +1,4 @@
 #include "ArrivalEvent.h"
-#include "Restaurant.h"
-
 
 ArrivalEvent::ArrivalEvent(int eTime, int oID, ORD_TYPE oType):Event(eTime, oID)
 {
