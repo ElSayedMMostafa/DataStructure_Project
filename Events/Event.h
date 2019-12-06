@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Defs.h"
+#include "..\Defs.h"
+
 
 class Restaurant;	//Forward declation
 
@@ -10,12 +11,6 @@ class Event
 protected:
 	int EventTime;	//Timestep when this event takes place
 	int OrderID;	//each event is related to certain order
-
-	///==Added Member===///
-	LinkedList<Order*> VIPOrders;
-	LinkedList<Order*> VeganOrders;
-	LinkedList<Order*> NormalOrders;
-
 public:
 	Event(int eTime, int ordID);
 	int getEventTime();
@@ -24,8 +19,5 @@ public:
 
 
 	virtual void Execute(Restaurant* pRest)=0;	////a pointer to "Restaurant" and events need it to execute
-
-	//==Added Functions==//
-	Event(int ordID); //Another Constructor
 
 };

@@ -4,8 +4,8 @@
 Cook::Cook()
 {
 }
- 
-Cook::Cook(int id, ORD_TYPE ty, int c_orders=4) {
+
+Cook::Cook(int id, ORD_TYPE ty, int c_orders = 4) {
 	ID = id;
 	type = ty;
 	switch (ty)  // The speed  and break duration aer constants for each type of cooks.
@@ -35,7 +35,7 @@ bool Cook::work() {  // Makes the cook start working unless he/she is in break
 		return true;
 	}
 	return false;
-} 
+}
 
 Cook::~Cook()
 {
@@ -80,4 +80,10 @@ bool Cook::Check4Break() {
 	return false;
 }
 
+int Cook::getSpeed() {
+	return speed;
+}
+void Cook::setSpeed(int sp) {
+	speed = sp;
+}
 
