@@ -1,5 +1,4 @@
 #pragma once
-
 enum PROG_MODE	//mode of the program interface
 {
 	Zero_Mode,
@@ -33,7 +32,3 @@ struct EVENT_DATA {
 	int size;
 	int money;
 };
-//struct ASSiGNED_ORDES {
-//	Order ord();
-//	Cook* cook();
-//};

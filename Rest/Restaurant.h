@@ -10,6 +10,7 @@
 #include"..\Events\PromotionEvent.h"
 #include"Cook.h"
 #include"Order.h"
+#include "..\Generic_DS\Trible_LinkedList.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -34,7 +35,8 @@ private:
 	//ASSIGNED_ORDER* a_orders [10]; //Replace 10 with the number of cooks.
 
 	void Rest_Reader_Populator(string filename) ;
-
+	
+	Trible_LinkedList in_operation;
 public:
 	
 	Restaurant();

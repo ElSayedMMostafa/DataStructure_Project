@@ -122,6 +122,7 @@ void Restaurant::Cooks_Orders_Assignment(int CurrentTimeStep) {
 	ORD_TYPE type;
 	Cook* mycook;
 	Order* myorder;
+	Trible trible;
 	//ASSIGNED_ORDER Aorder;
 	while (!(NormalCooks.isEmpty() && VeganCooks.isEmpty() && VIPCooks.isEmpty())) {
 		type = waiting_orders.getHead()->getItem()->GetType();
@@ -136,8 +137,10 @@ void Restaurant::Cooks_Orders_Assignment(int CurrentTimeStep) {
 			//Aorder.order = myorder;
 					   //==== Using the same LinkedList Implementation, I used the priority as the time to finish the ORDER--> Arrange with time; ======//
 			//a_orders.insertpri(Aorder, CurrentTimeStep + mycook->getSpeed()*myorder->GetDishes()); // TO BE EDITED
-			inwork_orders.insertpri(myorder, CurrentTimeStep + mycook->getSpeed()*myorder->GetDishes());
-			Busy_Cooks.insertpri(mycook, CurrentTimeStep + mycook->getSpeed()*myorder->GetDishes());
+			
+			in_operation.insertpri(trible, CurrentTimeStep + mycook->getSpeed()*myorder->GetDishes());
+			//inwork_orders.insertpri(myorder, CurrentTimeStep + mycook->getSpeed()*myorder->GetDishes());
+			//Busy_Cooks.insertpri(mycook, CurrentTimeStep + mycook->getSpeed()*myorder->GetDishes());
 		}
 	}
 }
