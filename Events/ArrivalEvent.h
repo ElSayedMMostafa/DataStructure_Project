@@ -15,6 +15,6 @@ public:
 	//Add more constructors if needed
 	
 	virtual void Execute(Restaurant *pRest);	//override execute function
-
+	//void Arrival_Event_Populator(fstream& myfile, Queue<Event*>&EventsQueue);
 };
 

@@ -10,4 +10,6 @@ PromotionEvent::PromotionEvent(int eTime, int oID, double Extramony) :Event(eTim
 }
 void PromotionEvent::Execute(Restaurant *pRest) {
 
+	pRest->promoteOrder(OrderID, ExMony);
+	cout << " The extra " << ExMony << endl;
 }
