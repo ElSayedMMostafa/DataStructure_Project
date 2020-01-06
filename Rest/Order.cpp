@@ -11,7 +11,7 @@ Order::Order(int id,int arr , ORD_TYPE r_Type, int dishn, double totalmo)
 		priority = 0;
 	}
 	else {
-		priority = arr * 3 + (int)totalmo/dishn;
+		priority = (int) 3/(ArrTime+1) + (int)totalMoney / Dishes;
 	}
 	status = WAIT;
 	waiting_time = 0;
@@ -54,3 +54,21 @@ ORD_STATUS Order::getStatus() const
 	return status;
 }
 
+void Order::GetNumberEachOrder(int* arr, Queue<Order*> DONE_ORDERS_QUEUE) {
+	// VIP       Vegan		Normals
+	arr[0] = 0; arr[1] = 0; arr[2] = 0;
+	Order* x;
+	while (!DONE_ORDERS_QUEUE.isEmpty())
+	{
+		DONE_ORDERS_QUEUE.dequeue(x);
+		switch (x->GetType())
+		{
+		case TYPE_VIP: arr[0]++;
+			break;
+		case TYPE_VEG: arr[1]++;
+			break;
+		case TYPE_NRM: arr[2]++;
+			break;
+		}
+	}
+}

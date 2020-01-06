@@ -15,6 +15,8 @@ private:
 	sf::Text textArea;
 
 	const std::string INIT_TEXT = "Welcome, this is the text area\n";
+	std::string Info_TEXT ;
+
 	const sf::Color TEXT_COLOR = sf::Color::Blue;
 	const sf::Color TEXT_CONTAINER_COLOR = sf::Color::White;
 	const sf::Color TEXT_CONTAINER_BORDER_COLOR = sf::Color::Black;
@@ -27,5 +29,6 @@ private:
 public:
 	TextArea(float windowSizeX, float windowSizeY, sf::Font* font);
 	void printString(std::string text);
+	 
 };
 

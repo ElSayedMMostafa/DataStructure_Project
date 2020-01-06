@@ -8,7 +8,7 @@ using namespace std;
 template <typename T>
 class LinkedList
 {
-private:
+protected :
 	Node<T> *Head;	//Pointer to the head of the list
 	//You can add tail pointer too (depending on your problem)
 	int count;	//Number of nodes in the list
@@ -35,6 +35,10 @@ public:
 	* Parameters:
 	*	- data : The value to be stored in the new node.
 	*/
+	bool isEmpty() {
+		if (Head == nullptr) return true; 
+		return false; 
+	}
 	void InsertBeg(const T &data)
 	{
 		Node<T> *R = new Node<T>(data);
@@ -44,7 +48,7 @@ public:
 
 	}
 	////////////////////////////////////////////////////////////////////////
-	template<typename T>
+	/*template<typename T>
 	void insertpri( T &value,int pri) {
 		Node<T>* node = new Node<T>;
 		node->setItem(value);
@@ -57,7 +61,7 @@ public:
 		}
 		node->setNext(p->getNext());
 		p->setNext(node);
-	}
+	}*/
 
 
 	/*
@@ -83,6 +87,7 @@ public:
 	// Implement the following member functions
 	T Getkth(int k) {
 		Node<T>* p = Head;
+		if (k == 0) return Head->getItem();
 		for (int i = 0; i < k; i++) {
 			p = p->getNext();
 		}
@@ -110,10 +115,32 @@ public:
 
 		}
 	}
-		//[1]InsertEnd 
 	//inserts a new node at end if the list
 	
+	T* toArray(int& count)
+	{
+		count = 0;
 
+		if (!Head)
+			return nullptr;
+		//counting the no. of items in the Queue
+		Node<T>* p = Head;
+		while (p)
+		{
+			count++;
+			p = p->getNext();
+		}
+
+
+		T* Arr = new T[count];
+		p = Head;
+		for (int i = 0; i < count; i++)
+		{
+			Arr[i] = p->getItem();
+			p = p->getNext();
+		}
+		return Arr;
+	}
 
 	//[2]Find 
 	//searches for a given value in the list, returns true if found; false otherwise.

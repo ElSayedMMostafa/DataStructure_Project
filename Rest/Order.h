@@ -1,7 +1,9 @@
 #pragma once
 
 #include "..\Defs.h"
-
+#include<iostream>
+#include "..\Generic_DS\Queue.h"
+using namespace std;
 class Order
 {
 
@@ -19,6 +21,7 @@ protected:
 	
 
 public:
+	Order() {}
 	Order(int ID,int arr, ORD_TYPE r_Type,int dishn,double totalmo);
 	virtual ~Order();
 
@@ -27,12 +30,29 @@ public:
 	ORD_TYPE GetType() const;
 
 	void SetDishes(int d);
+
+	void Promote_To_Vip(int extra) {
+		type = TYPE_VIP;
+		cout << " The extra is " << extra;
+		totalMoney = extra + totalMoney;
+		priority = (int)3 / (ArrTime + 1) + (int)totalMoney / Dishes;
+	}
+	void increment_waiting_time() { waiting_time++; }
 	int GetDishes() const;
 	int GetPriority() const { return priority; }
 
 	void setStatus(ORD_STATUS s);
 	ORD_STATUS getStatus() const;
-	
+
+	bool reprioritize_Order(int p ) {
+		if (!type) return false;
+		if (waiting_time > p) {
+			type = ORD_TYPE::TYPE_VIP;
+			priority = (int)3 / (1+ArrTime) + (int)totalMoney / Dishes;
+			return true;
+		}
+		return false;
+	}
 	//
 	// TODO: Add More Member Functions As Needed
 	//
@@ -44,5 +64,18 @@ public:
 		}
 		return false;
 	}
-	
+
+	static void GetNumberEachOrder(int* arr, Queue<Order*> DONE_ORDERS_QUEUE);
+	int get_FT() {
+		return FinishTime;
+	}
+	void set_FT(int t) {
+		FinishTime = t;
+	}
+	int get_WT() {
+		return waiting_time;
+	}
+	int get_AT() {
+		return ArrTime;
+	}
 };

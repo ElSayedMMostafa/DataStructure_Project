@@ -3,6 +3,7 @@
 
 Cook::Cook()
 {
+		taken_orders = 0;
 }
 
 Cook::Cook(int id, ORD_TYPE ty, int c_orders = 4) {
@@ -22,19 +23,19 @@ Cook::Cook(int id, ORD_TYPE ty, int c_orders = 4) {
 	cons_orders = c_orders; // Default value is 4 unless the user defined another value.
 	taken_orders = 0;
 }
+Cook::Cook(int id, ORD_TYPE ty, int sp, int c_orders = 4, int br_duration = 3) {
+	ID = id;
+	type = ty;
+	speed = sp;
+	break_duration = br_duration;
+	cons_orders = c_orders; // Default value is 4 unless the user defined another value.
+	taken_orders = 0;
+}
 bool Cook::isBusy() {
 	return busy;
 }
 bool Cook::inBreak() {
 	return in_break;
-}
-bool Cook::work() {  // Makes the cook start working unless he/she is in break
-	if (!Check4Break()) {
-		busy = true;
-		taken_orders++;
-		return true;
-	}
-	return false;
 }
 
 Cook::~Cook()
@@ -75,8 +76,15 @@ void Cook::setType(ORD_TYPE t)
 	}
 }
 
-bool Cook::Check4Break() {
-	if (taken_orders == cons_orders) { in_break = true; busy = false; return true; }
+bool Cook::Check4Break(int time) {
+	if (taken_orders == cons_orders) { in_break = true; busy = false; time_moment = time + break_duration; return true; }
+	return false;
+}
+void Cook::goBreak_Injuried(int time) {
+	in_break = true; busy = false; time_moment = time + break_duration;
+}
+bool Cook::OutFromBreak(int time) {
+	if (time == time_moment) return true;
 	return false;
 }
 

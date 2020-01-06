@@ -20,7 +20,7 @@ private:
 	sf::Text ModeTextInput;
 
 	const std::string msg = "Choose the mode\n\t1-interactive mode\n\t2-Step-by-step mode\
-			\n\t3-Silent mode\n\t4-Demo mode (for introductory phase only, should be removed in phases 1&2)\n";
+			\n\t3-Silent mode\n";
 
 	PROG_MODE currentMode;
 

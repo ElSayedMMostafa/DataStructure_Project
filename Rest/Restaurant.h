@@ -4,6 +4,8 @@
 #include "..\GUI\GUI.h"
 #include"..\Generic_DS\Queue.h"
 #include"..\Generic_DS\LinkedList.h"
+#include"..\Generic_DS\Waiting_Orders_LinkedList.h"
+#include"..\Generic_DS\Cooks_LinkedList.h"
 #include"..\Events\Event.h"
 #include"..\Events\ArrivalEvent.h"
 #include"..\Events\CancellationEvent.h"
@@ -20,23 +22,25 @@ class Restaurant
 private:
 	GUI *pGUI;
 	Queue<Event*> EventsQueue;	//Queue of all events that will be loaded from file
-	/////////////////////////////////////
-	///===Added Members-Cooks===///
-	Queue<Cook*> VIPCooks;  //A queue for each a type of AVAILABLE cooks.
-	Queue<Cook*> NormalCooks;
-	Queue<Cook*> VeganCooks;
+
+								///===Added Members-Cooks===///
+	Cooks_LinkedList VIPCooks;  //A queue for each a type of AVAILABLE cooks.
+	Cooks_LinkedList NormalCooks;
+	Cooks_LinkedList VeganCooks;
 	Queue<Cook*> B_cooks; // A queue of "in break" cooks;
-	LinkedList<Cook*> Busy_Cooks;
+	Queue<Cook*> Inj_cooks; // A queue of "injuried" cooks;
+	int Total_VIP_Cook=0; int Total_Vegan_Cook = 0; int Total_NRM_Cook = 0;
 	///===Added Members-orders===///
-	LinkedList<Order*> waiting_orders;
-	LinkedList<Order*> inwork_orders;
-	LinkedList<Order*> done_orders;
+	Waiting_Orders_LinkedList waiting_orders;
+	Trible_LinkedList in_operation;
+	Queue<Order*> done_orders;
+	int N_Done_Orders=0;
 	//LinkedList<ASSIGNED_ORDER> a_orders;
 	//ASSIGNED_ORDER* a_orders [10]; //Replace 10 with the number of cooks.
 
 	void Rest_Reader_Populator(string filename) ;
-	
-	Trible_LinkedList in_operation;
+	int auto_promotion;
+
 public:
 	
 	Restaurant();
@@ -45,12 +49,26 @@ public:
 	void ExecuteEvents(int TimeStep);	//executes all events at current timestep
 	void RunSimulation();
 	
-	void FillDrawingList();
-	void addOrder(int ID, int arr, ORD_TYPE r_Type, int dishn, double totalmo);
+
+	void FillDrawingList(int TimeStep, Queue<Trible*>* Assigned);
+
+
+	void addOrder(Order* d);
 	void CancelOrder(int ID);
-	void Cooks_Orders_Assignment(int CurrentTimeStep);
+	void promoteOrder(int ID, int Extra);
+
+
+	bool Cooks_Orders_Assignment(int CurrentTimeStep, Queue<Trible*>* Assigned);
+	void FinishOrder(int time);
+	bool GetCookOut(int time);
+
+
+
 	void Cooks_Populator(int* arr);
 	void Arrival_Event_Populator(fstream& myfile);
 	void Cancelation_Event_Populator(fstream& myfile);
 	void Promotion_Event_Populator(fstream& myfile);
+	int get_auto_pro() { return auto_promotion; };
+	
+	void OutFile();
 };

@@ -1,7 +1,7 @@
 #pragma once
+
 enum PROG_MODE	//mode of the program interface
 {
-	Zero_Mode,
 	MODE_INTR,	//interactive mode
 	MODE_STEP,	//Step-by-step mode
 	MODE_SLNT,	//Silent mode
@@ -25,6 +25,7 @@ enum ORD_STATUS	//order status
 	DONE,	//Delivered (finished) to its destination
 	ORD_STATUS_CNT
 };
+
 struct EVENT_DATA {
 	ORD_TYPE TYPE;
 	int TS; //time_step
@@ -32,3 +33,9 @@ struct EVENT_DATA {
 	int size;
 	int money;
 };
+
+//struct ASSIGNED_ORDER {
+//	int finishing_time;
+//	Order *order;
+//	Cook *cook;
+//};

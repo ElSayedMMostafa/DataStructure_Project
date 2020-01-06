@@ -8,7 +8,7 @@
 #include <fstream>
 
 using namespace std;
-int GUIDemo()
+/* int GUIDemo()
 {
 	GUI gui;
 	gui.initSimMode();
@@ -20,13 +20,13 @@ int GUIDemo()
 			//gui.printStringInStatusBar("Current Time: " + std::to_string(steps));
 	//	}
 		int i = 5;
-/*
-		for (int i = 0; i < steps; i++) {
-			gui.addGUIDrawable(new VIPGUIElement(i+2, GUI_REGION::ORD_REG));
-			gui.addGUIDrawable(new NormalGUIElement(i, GUI_REGION::COOK_REG));
-			gui.addGUIDrawable(new VeganGUIElement(i, GUI_REGION::SRV_REG));
-			gui.addGUIDrawable(new VIPGUIElement(i, GUI_REGION::DONE_REG));
-		}*/
+
+	//	for (int i = 0; i < steps; i++) {
+		//	gui.addGUIDrawable(new VIPGUIElement(i+2, GUI_REGION::ORD_REG));
+		//	gui.addGUIDrawable(new NormalGUIElement(i, GUI_REGION::COOK_REG));
+		//	gui.addGUIDrawable(new VeganGUIElement(i, GUI_REGION::SRV_REG));
+	//		gui.addGUIDrawable(new VIPGUIElement(i, GUI_REGION::DONE_REG));
+		} //
 		gui.addGUIDrawable(new VIPGUIElement(i + 2, GUI_REGION::ORD_REG));
 		gui.addGUIDrawable(new NormalGUIElement(i, GUI_REGION::COOK_REG));
 		gui.addGUIDrawable(new VeganGUIElement(i, GUI_REGION::SRV_REG));
@@ -46,9 +46,9 @@ int GUIDemo()
 	//}
 	
 	return 0;
-}
+} */
 
-/*int GUIDemo()
+int GUIDemo()
 {
 	GUI gui;
 	gui.initSimMode();
@@ -77,18 +77,18 @@ int GUIDemo()
 	}
 
 	return 0;
-}*/
+}
 
 int main() {
 
-	Restaurant* pRest = new Restaurant;
+	/*Restaurant* pRest = new Restaurant;
 	pRest->RunSimulation();
 
+	delete pRest;*/
 
-	delete pRest;
+	GUIDemo();
+	// Reader
 
-	//GUIDemo();
-	system("pause");
 };
 
 

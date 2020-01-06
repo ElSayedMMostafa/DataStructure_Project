@@ -5,7 +5,26 @@
 #include "GUIWindows\MainScreen.h"
 #include "GUIWindows\TextArea.h"
 #include "GUIDrawables\VIPGUIElement.h"
+#include "GUIDrawables\NormalGUIElement.h"
+#include "GUIDrawables\VeganGUIElement.h"
 #include "..\Defs.h"
+#include"..\Generic_DS\Queue.h"
+#include"..\Generic_DS\LinkedList.h"
+#include"..\Generic_DS\Waiting_Orders_LinkedList.h"
+#include"..\Generic_DS\Cooks_LinkedList.h"
+
+#include "..\Defs.h"
+#include"..\Generic_DS\Queue.h"
+#include"..\Generic_DS\LinkedList.h"
+#include"..\Generic_DS\Waiting_Orders_LinkedList.h"
+#include"..\Generic_DS\Cooks_LinkedList.h"
+#include"..\Events\Event.h"
+#include"..\Events\ArrivalEvent.h"
+#include"..\Events\CancellationEvent.h"
+#include"..\Events\PromotionEvent.h"
+#include"..\Rest\Cook.h"
+#include"..\Rest\Order.h"
+#include "..\Generic_DS\Trible_LinkedList.h"
 
 class GUI{
 
@@ -48,11 +67,18 @@ public:
 
 	void addGUIDrawable(GUIDrawable* drawable);
 	void deleteGUIDrawable(int ID, GUI_REGION r);
+	void deleteGUIDrawable();
+
 	void printStringInStatusBar(std::string text);
 	void handleSimGUIEvents();
 	void waitForClick();
 	void updateInterface();
 
 	static void sleep(int milliseconds);
+
+
+
+	void FillDrawings(int &step, Queue<Trible*>*&Assigned, Cooks_LinkedList &VIPCooks, Cooks_LinkedList& NormalCooks, Cooks_LinkedList& VeganCooks, Queue<Cook*>& B_cooks, Waiting_Orders_LinkedList &waiting_orders, Trible_LinkedList &in_operation, Queue<Order*> &done_orders);
+	
 };
 

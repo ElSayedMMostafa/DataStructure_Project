@@ -1,0 +1,24 @@
+The number of Served orders = 12
+FT	ID	AT	WT	ST
+2	201	2	0	0
+3	1	1	0	2
+5	103	4	0	1
+5	102	2	0	3
+7	2	2	0	5
+7	101	1	0	6
+8	3	4	2	2
+10	205	8	0	2
+10	203	7	0	3
+11	204	7	0	4
+15	4	4	2	9
+15	202	4	0	11
+# VIP Orders =    3
+# Vegan Orders =  5
+# Normal Orders = 4
+Number of Cooks = 9
+# VIP Cooks =    2
+# Vegan Cooks =  5
+# Normal Cooks = 2
+Avg Wait= 0.333333
+Avg Serv= 4
+Auto-Promoted= 0
