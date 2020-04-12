@@ -6,5 +6,5 @@ The project is mainly a GUI application to run a restaurant with the best Data S
  LinkedLists, Queues, Stacks, Trees and Graphs.
 I used the SFML GUI Library, so the GUI cannot run without it.
 
-In the university project discussion, I got the full mark + bonus points for implementing bonus techniques specified in the project dosunment.
+In the university project discussion, I got the full mark + bonus points for implementing bonus techniques specified in the project docunment.
 '' The Project document is attached ''
